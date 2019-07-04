@@ -1,6 +1,6 @@
 ---
 title: "블로그 생성"
-date: 2019-07-03 17:00
+date: 2019-07-03 17:00 +09:00
 categories:
   - life
 tags:
