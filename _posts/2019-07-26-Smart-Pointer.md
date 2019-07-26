@@ -8,16 +8,16 @@ tags:
 toc: true
 ---
 
-### 스마트 포인터
+## 스마트 포인터
 
 헤더: <memory>  
 
 메모리 누수(memory_leak)로 부터 안전성을 보장하기 위한 클래스 템플릿으로 소멸자를 통해 동적할당된 메모리를 해제한다. 
 
-> 자바의 가비지 컬렉터(Garbage Collector)처럼 알아서 해주지 않기 때문에 
+> 자바의 가비지 컬렉터(Garbage Collector)처럼 알아서 해주지 않기 때문에  
 > C++에서는 프로그래머가 전부 신경써줘야 된다는 슬픈 현실... ㅠ
 
-#### auto_ptr
+### auto_ptr
 
 C++11에서 deprecated된 이전 버전의 스마트 포인터이다. (C++17부터 삭제)
 
@@ -30,13 +30,13 @@ std::auto_ptr<Class> object(new Class);
 이 특징이 바로 `auto_ptr`을 C++11에서 deprecated되게 한 이유이기도 한데
 
 1. 한 포인터에 대한 **유일**한 소유권을 가진다.
-2. 복사시에 소유권 이전(ownership transfer)이 일어난다.
+2. 복사시에 소유권 이전(ownership transfer)이 일어난다.  
    이는 복사된 `auto_ptr`이 포인터에 대한 소유권을 완전히 가지고 원래의 `auto_ptr`은 `null`값을 가지게 된다.
 3. 배열 타입을 지원하지 않는다. (`delete[]`가 아닌 `delete`로 객체를 삭제)
 4. STL의 표준 컨테이너 클래스들과 사용이 불가능하다. (복사와 할당의 문제 존재)
 5. 범용 스마트 포인터가 아니고, 레퍼런스 카운터의 개념을 사용하지 않는다.
 
-#### `C++11` shared_ptr
+### C++11` shared_ptr
 
 1. 레퍼런스 카운터의 개념을 사용
 2. 원시 포인터 하나를 여러 소유자에게 할당시 사용
@@ -48,7 +48,7 @@ std::auto_ptr<Class> object(new Class);
 >
 > `use_count()`: 참조 횟수를 반환한다.
 
-#### `C++11` unique_ptr
+### `C++11` unique_ptr
 
 1. 한 명의 소유자만 허용
 2. 소유권을 가지고 있을때만, 소멸자가 해당 객체를 삭제 가능
@@ -60,7 +60,7 @@ std::auto_ptr<Class> object(new Class);
 >
 > `release()`: 객체를 파괴하지 않고 포인터만 반환 후 unique_ptr을 null로 만든다.
 
-#### `C++11` weak_ptr
+### `C++11` weak_ptr
 
 1. 하나 이상의 `shared_ptr` 인스턴스가 소유하는 객체애 대한 접근 제공
 2. 하지만 참조 횟수에 포함되지 않는다.
