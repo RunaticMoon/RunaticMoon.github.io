@@ -14,7 +14,7 @@ toc: true
 
 메모리 누수(memory_leak)로 부터 안전성을 보장하기 위한 클래스 템플릿으로 소멸자를 통해 동적할당된 메모리를 해제한다. 
 
-> 자바의 가비지 컬렉터(Garbage Collector)처럼 알아서 해주지 않기 때문에
+> 자바의 가비지 컬렉터(Garbage Collector)처럼 알아서 해주지 않기 때문에  
 > C++에서는 프로그래머가 전부 신경써줘야 된다는 슬픈 현실... ㅠ
 
 ### auto_ptr
@@ -25,8 +25,9 @@ C++11에서 deprecated된 이전 버전의 스마트 포인터이다. (C++17부�
 std::auto_ptr<Class> object(new Class);
 ```
 
-`auto_ptr`는 소유권(ownership)을 가지는 특징을 가진다.
+`auto_ptr`는 소유권(ownership)을 가지는 특징을 가진다.  
 이 특징이 바로 `auto_ptr`을 C++11에서 deprecated되게 한 이유이기도 한데
+
 1. 한 포인터에 대한 **유일**한 소유권을 가진다.
 2. 복사시에 소유권 이전(ownership transfer)이 일어난다.  
    이는 복사된 `auto_ptr`이 포인터에 대한 소유권을 완전히 가지고 원래의 `auto_ptr`은 `null`값을 가지게 된다.
@@ -42,7 +43,7 @@ std::auto_ptr<Class> object(new Class);
 4. 대입 연산자 사용시 참조 횟수가 1이 늘어난다.
 5. `C++11` `make_shared<>()` 함수를 사용하여 안전하게 생성 가능
 
-> `reset()`: 자원을 임의로 해제한다.
+> `reset()`: 자원을 임의로 해제한다.  
 >`use_count()`: 참조 횟수를 반환한다.
 
 ### `C++11` unique_ptr
@@ -53,7 +54,7 @@ std::auto_ptr<Class> object(new Class);
 4. 대입 연산자는 금지
 5. `C++14` `make_unique<>()`함수를 사용하여 안전하게 생성 가능
 
-> `reset()`: 자원을 임의로 해제한다.
+> `reset()`: 자원을 임의로 해제한다.  
 > `release()`: 객체를 파괴하지 않고 포인터만 반환 후 unique_ptr을 null로 만든다.
 
 ### `C++11` weak_ptr
@@ -63,7 +64,7 @@ std::auto_ptr<Class> object(new Class);
 3. 서로가 서로를 가르키는 순환참조(circular referenece)를 제거하기 위해 사용
 4. 그 자체만으로는 shared_ptr의 값에 접근할 수 없다.
 
-> `reset()`: 자원을 임의로 해제한다.
-> `use_count()`: 참조 횟수를 반환한다.
-> `lock()`: shared_ptr로 변환한다.
+> `reset()`: 자원을 임의로 해제한다.  
+> `use_count()`: 참조 횟수를 반환한다.  
+> `lock()`: shared_ptr로 변환한다.  
 > `expired()`: 존재하지 않는다면 true, 존재 한다면 false
