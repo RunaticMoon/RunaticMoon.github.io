@@ -363,9 +363,10 @@ render()의 두번 째 매개변수는 application내의 templates 아래의 경
 
 
 
-### template 설정
+### template 설정[^1]
 
 ```django
+{% raw %}
 <!-- form내부에 정의하며 hidden input으로 
 		 CSRF 공격을 막기위한 토큰이 추가된다. -->
 {% csrf_token %}
@@ -375,6 +376,7 @@ render()의 두번 째 매개변수는 application내의 templates 아래의 경
 
 <!-- 프로젝트 내의 다른 url을 사용하는 곳에 삽입 + 매개변수 넘기기 -->
 {% url 'students:stuMod' student_info.s_name %}
+{% endraw %}
 ```
 
 어플리케이션내에 `templates\student` 폴더를 만들어 html파일을 저장한다.
@@ -422,9 +424,10 @@ template에서 사용될 변수를 context에 담아서 render의 세번 째 매
 
 
 
-### Django Script
+### Django Template[^1]
 
 ```django
+{% raw %}
 <!-- if문 -->
 {% if student_list %}
 {% endif %}
@@ -439,5 +442,11 @@ template에서 사용될 변수를 context에 담아서 render의 세번 째 매
 	<!-- 변수에 포함된 값 읽어오기 -->
 	{{ s.s_name }} 
 {% endfor %}
+{% endraw %}
 ```
 
+
+
+---
+
+[^1]: raw ~ endraw는 jekyll의 liquid tag와 django의 Template가 같기에 구문을 해석하지 말라는 뜻이다.
