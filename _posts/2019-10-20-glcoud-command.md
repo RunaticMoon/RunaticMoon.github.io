@@ -7,6 +7,7 @@ tags:
   - Compute Engine
   - Kubernetes
   - Load Balancer
+  - 정리
 toc: true
 ---
 
